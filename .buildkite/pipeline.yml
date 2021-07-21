@@ -10,7 +10,7 @@ steps:
     agents:
       queue: docker
     plugins:
-      - docker-compose#v3.7.0:
+      - docker-compose#v3.8.0:
           build: [node, node-14]
 
   - wait
@@ -18,13 +18,13 @@ steps:
   - label: ":yarn: LTS"
     command: "yarn test"
     plugins:
-      - docker-compose#v3.7.0:
+      - docker-compose#v3.8.0:
           run: node
 
   - label: ":yarn: 14.x"
     command: "yarn test"
     plugins:
-      - docker-compose#v3.7.0:
+      - docker-compose#v3.8.0:
           run: node-14
 
   - wait
@@ -33,7 +33,7 @@ steps:
     command: "yarn run release"
     branches: main next next-major beta alpha *.x
     plugins:
-      - docker-compose#v3.7.0:
+      - docker-compose#v3.8.0:
           run: node
       - seek-oss/aws-sm#v2.3.1:
           env:
